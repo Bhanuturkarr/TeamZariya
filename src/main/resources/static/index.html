@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="A personal learning workspace that adapts to you.">
+  <title>AI Tutor — your learning workspace</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-decoration auth-decoration-one"></div>
+    <div class="auth-decoration auth-decoration-two"></div>
+    <section class="auth-card" aria-labelledby="auth-title">
+      <a class="brand brand-auth" href="/" aria-label="AI Tutor home">
+        <span class="brand-mark">✳</span><span>AI Tutor</span>
+      </a>
+      <div class="auth-intro">
+        <span class="eyebrow">YOUR LEARNING, IN RHYTHM</span>
+        <h1 id="auth-title">Make every study session count.</h1>
+        <p>Bring your notes. Find your next step. Build lasting confidence.</p>
+      </div>
+      <div class="auth-tabs" role="tablist" aria-label="Account options">
+        <button class="auth-tab is-active" type="button" data-auth-mode="login" role="tab" aria-selected="true">Sign in</button>
+        <button class="auth-tab" type="button" data-auth-mode="register" role="tab" aria-selected="false">Create account</button>
+      </div>
+      <form id="auth-form" class="auth-form">
+        <label class="field-label" for="auth-username">Username</label>
+        <input id="auth-username" name="username" autocomplete="username" minlength="3" maxlength="80" placeholder="Your username" required>
+        <label class="field-label" for="auth-password">Password</label>
+        <input id="auth-password" name="password" type="password" autocomplete="current-password" minlength="1" maxlength="72" placeholder="Your password" required>
+        <p id="auth-hint" class="field-hint">Sign in with your learner account.</p>
+        <button class="button button-primary button-wide" type="submit"><span id="auth-submit-label">Open my workspace</span><span aria-hidden="true">↗</span></button>
+        <p id="auth-error" class="form-error" role="alert" hidden></p>
+      </form>
+      <div class="auth-footer"><span class="status-dot"></span> Your private learning space</div>
+    </section>
+    <aside class="auth-note"><span class="note-orbit">✦</span><p>Small steps.<br><strong>Remarkable progress.</strong></p><span class="note-caption">A little better every day</span></aside>
+  </div>
+
+  <div id="app" class="app-shell" hidden>
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-top">
+        <a class="brand" href="#dashboard" aria-label="AI Tutor dashboard"><span class="brand-mark">✳</span><span>AI Tutor</span></a>
+        <button class="icon-button sidebar-close" data-action="close-sidebar" aria-label="Close menu">×</button>
+      </div>
+      <div class="workspace-label">YOUR WORKSPACE <button class="icon-button small" data-action="new-project" aria-label="Create a project">＋</button></div>
+      <div id="project-list" class="project-list"></div>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <button class="nav-link is-active" data-view="dashboard"><span class="nav-icon">⌂</span><span>Overview</span></button>
+        <button class="nav-link" data-view="library"><span class="nav-icon">▤</span><span>Study materials</span></button>
+        <button class="nav-link" data-view="learning"><span class="nav-icon">✳</span><span>Learning plan</span></button>
+        <button class="nav-link" data-view="reports"><span class="nav-icon">◷</span><span>Progress</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-tip"><span class="tip-star">✦</span><strong>One step at a time</strong><p>Your plan adjusts as you learn. Keep showing up and the progress follows.</p></div>
+        <button class="profile-button" data-action="logout">
+          <span class="avatar" id="profile-avatar">B</span>
+          <span class="profile-copy"><strong id="profile-name">Learner</strong><small>Personal account</small></span>
+          <span class="profile-menu">···</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-shell">
+      <header class="topbar">
+        <button class="icon-button menu-button" data-action="open-sidebar" aria-label="Open menu">☰</button>
+        <div class="breadcrumbs"><span>Workspace</span><span class="crumb-divider">/</span><strong id="breadcrumb-current">Overview</strong></div>
+        <div class="topbar-right"><span class="api-status"><span id="api-dot" class="status-dot"></span><span id="api-status-label">Connecting</span></span><button class="help-button" data-action="open-api-help">API guide <span>↗</span></button></div>
+      </header>
+      <div id="content" class="content-area" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast-region" class="toast-region" role="status" aria-live="polite"></div>
+</body>
+</html>

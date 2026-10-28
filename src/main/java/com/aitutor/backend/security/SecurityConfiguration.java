@@ -21,7 +21,8 @@ public class SecurityConfiguration {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/health", "/api/v1/auth/register", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers("/", "/index.html", "/styles.css", "/app.js", "/favicon.svg",
+                                "/api/v1/health", "/api/v1/auth/register", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .build();

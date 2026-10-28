@@ -20,7 +20,7 @@ Spring Boot 4.1.2 REST API using Java 25, PostgreSQL 16 with pgvector, Flyway, S
 
    Keep this PowerShell window open while using the API. The demo account owns projects created before Phase 7. It is recreated with the password above each time the API starts.
 
-4. In a browser, open [Swagger UI](http://localhost:8080/swagger-ui.html). Choose **Authorize**, enter `demo` and the password set above, then try the endpoints. The health endpoint is public.
+4. In a browser, open [AI Tutor](http://localhost:8080/) for the learner interface, or [Swagger UI](http://localhost:8080/swagger-ui.html) to explore the API. Sign in to AI Tutor with the `demo` account and the password set above. The health endpoint, account registration, and static UI files are public; project and learning API routes require Basic authentication.
 
 For a second learner account, register once with `POST /api/v1/auth/register` from Swagger. All project, material, assessment, plan, lesson, exercise, and report routes require Basic authentication. Each account only sees its own projects; an inaccessible resource returns 404.
 
